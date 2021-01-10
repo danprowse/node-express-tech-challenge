@@ -1,3 +1,4 @@
+const nanoid = require('nanoid');
 const express = require('express');
 const router = express.Router();
 const orders = require('../../db/test-data');
@@ -9,9 +10,9 @@ router.get('/', (req , res) => {
 
 // get single order
 router.get('/:id', (req, res) => {
-  const found = orders.some(order => order.id === parseInt(req.params.id));
+  const found = orders.some(order => order.id === req.params.id);
   if (found) {
-    res.status(200).json(orders.filter(order => order.id === parseInt(req.params.id)))
+    res.status(200).json(orders.filter(order => order.id === req.params.id))
   } else {
     res.status(404).json({ msg: `order does not exist with the id of: ${req.params.id}`});
   }
@@ -20,7 +21,7 @@ router.get('/:id', (req, res) => {
 // create order
 router.post('/', (req, res) => {
   const newOrder = {
-    id: (orders.length + 1),
+    id: nanoid.nanoid(),
     vehicleManufacturer: '',
     model: '',
     totalPrice: 0 
@@ -36,12 +37,12 @@ router.post('/', (req, res) => {
 
 // update order
 router.put('/:id', (req, res) => {
-  const found = orders.some(order => order.id === parseInt(req.params.id));
+  const found = orders.some(order => order.id === req.params.id);
   console.log(req.body);
   if (found) {
     const updatedOrder = req.body;
     orders.forEach(order => {
-      if(order.id === parseInt(req.params.id)) {
+      if(order.id === req.params.id) {
         order.vehicleManufacturer = updatedOrder.vehicleManufacturer ? updatedOrder.vehicleManufacturer : order.vehicleManufacturer;
         order.model = updatedOrder.model ? updatedOrder.model : order.model;
         order.totalPrice = updatedOrder.totalPrice ? parseInt(updatedOrder.totalPrice) : order.totalPrice;
@@ -55,10 +56,10 @@ router.put('/:id', (req, res) => {
 
 // delete member
 router.delete('/:id', (req, res) => {
-  const found = orders.some(order => order.id === parseInt(req.params.id));
+  const found = orders.some(order => order.id === req.params.id);
   if (found) {
     //delete order
-    res.status(200).json({ msg: 'order deleted', orders: orders.filter(order => order.id !== parseInt(req.params.id))});
+    res.status(200).json({ msg: 'order deleted', orders: orders.filter(order => order.id !== req.params.id)});
   } else {
     res.status(404).json({ msg: `order does not exist with the id of: ${req.params.id}`});
   }
