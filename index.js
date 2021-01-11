@@ -14,6 +14,7 @@ app.use(morgan('combined'));
 
 // api routes 
 app.use('/api/orders', require('./routes/api/orders'))
+app.use('/api/login', require('./routes/api/login'))
 
 //endpoint
 app.get('/', (req, res) => {
