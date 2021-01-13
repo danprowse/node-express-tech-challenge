@@ -1,2 +1,6 @@
+# package directories
 node_modules
-db/test-data.js
+jspm_packages
+
+# Serverless directories
+.serverless

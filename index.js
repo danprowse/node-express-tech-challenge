@@ -2,14 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
-
-const PORT = process.env.PORT || 5000;
+const compression = require('compression');
+// const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
+app.use(compression())
 app.use(morgan('combined'));
 
 // api routes 
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
   res.json({msg: 'Vehicle Order API'})
 })
 
-app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+// app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+module.exports = app;
 
 

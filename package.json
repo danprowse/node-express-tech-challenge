@@ -11,7 +11,9 @@
   "author": "Daniel Prowse",
   "license": "MIT",
   "dependencies": {
+    "aws-serverless-express": "^3.4.0",
     "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^4.3.1",
