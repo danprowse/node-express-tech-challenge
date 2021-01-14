@@ -1,9 +1,9 @@
 const nanoid = require("nanoid");
 const express = require("express");
 const router = express.Router();
-const orders = require("../../db/test-data");
+const orders = require("../../../db/test-data");
 const jwt = require("jsonwebtoken");
-const verifyToken = require("../../auth/auth");
+const verifyToken = require("../../../auth/auth");
 
 router.get("/", verifyToken, (req, res) => {
   jwt.verify(req.token, "secretkey", (err, authData) => {

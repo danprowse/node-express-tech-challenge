@@ -9,8 +9,6 @@ router.post('/', (req, res) => {
   
   //get user from db.
   
-  //skipped above for this example and created a mock user 
-
   // on client side save the sent jwt token in local storage as reference for logged in user for requesting protected routes
 
   //mock user

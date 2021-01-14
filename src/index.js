@@ -3,7 +3,10 @@ const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const compression = require('compression');
-// const PORT = process.env.PORT || 5000;
+const pid = process.pid;
+const PORT = process.env.PORT || 5000;
+
+
 const app = express();
 
 app.use(helmet());
@@ -23,7 +26,7 @@ app.get('/', (req, res) => {
   res.json({msg: 'Vehicle Order API'})
 })
 
-// app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
-module.exports = app;
+app.listen(PORT, () => console.log(`Server running on port: ${PORT} \nProcess running on: ${pid}`));
+// module.exports = app;
 
 
