@@ -1,40 +1,46 @@
-# AWS
+# GForces Technical Task
 
+A technical task that incolved creating a web service that needed to process the following:
 
-A personal side project where i've created a landing page using HTML, CSS and Javascript. 
+1. Create an order returning an order uuid.
+2. Update an order with a vehicle manufacturer, model and total price.
+3. View an order with all its details.
 
-Within the page the user has grid tiles that allow a welcome message and a reminder or a todo message to be set. Two grid tiles display rotating news content and one tile outputs the users current weather information.
+whilst considering these requirements:
 
-To access the news data, locally i have created a proxy backend Express server that uses the Novara, Guardian and Weatherapi endpoints to request the information. 
+* Performance
+* Security
+* Durability
+* Scalability
+* Tooling
+* I18N
 
-## Developing
-If you wish to grab a copy of this repository, navigate to where you would like the copy of the repo to be within your terminal and follow the steps below:
+## Run Applictaion
+
+To run the service locally:
 
 ```bash
-  git clone [repo url] [new project name]
-  cd [project name]
+  npm install
+  npm run start
 ```
+To test each endpoint i recommend using Postman.
 
-If [new project name] parameter is left out the name of this repo will be used by default.
+## AWS
+As the application is wihtin AWS architecture and has a .yml file, the service can be hosted as serverless functions on AWS.
 
-> My choice of text editor is VS Code where i use the Live Server extension to run and test.
+To delpoy the service to AWS:
+* Comment out "const PORT = process.env.PORT || 5000;"
+* repeat for "app.listen(PORT, () => console.log(`Server running on port: ${PORT} \nProcess running on: ${pid}`));".
 
-## Features
-* Parallax backgrounds
-* contenteditable attribute
-* Fetch API
-* Local Storage
-* Classes
-* Geolocation API
+* uncomment "module.exports = app".
 
-## Contributing
-Not currently accepting contributions but feel free to use and reference the code by cloning the repository.
-
-## Useful Links
-* [Moziila](https://developer.mozilla.org/en-US/docs/Web)
-* [Traversy Media](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA)
+Now from within your terminal at the project root directory run the command:
+```bash
+  sls deploy
+```
+This will upload your repo to AWS.
 
 ## License
 The code in this project is licensed under MIT license.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/danprowse/grid-tile-landing/blob/master/LISENCE)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)

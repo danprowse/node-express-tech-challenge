@@ -6,7 +6,6 @@ const compression = require('compression');
 const pid = process.pid;
 const PORT = process.env.PORT || 5000;
 
-
 const app = express();
 
 app.use(helmet());

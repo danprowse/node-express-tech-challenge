@@ -1,4 +1,3 @@
-// cluster.js
 const cluster = require('cluster');
 const os = require('os');
 
@@ -17,7 +16,9 @@ if (cluster.isMaster) {
       cluster.fork();
     }
   });
-  
+
 } else {
   require('./index');
 }
+
+// module.exports = cluster;
