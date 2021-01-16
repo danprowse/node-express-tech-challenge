@@ -18,7 +18,7 @@ if (cluster.isMaster) {
   });
 
 } else {
-  require('./index');
+  require('./server');
 }
 
 // module.exports = cluster;
