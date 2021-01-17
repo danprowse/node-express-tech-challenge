@@ -1,6 +1,6 @@
 # GForces Technical Task
 
-A technical task that incolved creating a web service that needed to process the following:
+A technical task that incolved creating a web service and datastore that needed to process the following:
 
 1. Create an order returning an order uuid.
 2. Update an order with a vehicle manufacturer, model and total price.
@@ -28,17 +28,8 @@ To test each endpoint i recommend using Postman.
 ## AWS
 As the application is wihtin AWS architecture and has a .yml file, the service can be hosted as serverless functions on AWS.
 
-To delpoy the service to AWS:
-* Comment out "const PORT = process.env.PORT || 5000;"
-* repeat for "app.listen(PORT, () => console.log(`Server running on port: ${PORT} \nProcess running on: ${pid}`));".
-
-* uncomment "module.exports = app".
-
-Now from within your terminal at the project root directory run the command:
-```bash
-  sls deploy
-```
-This will upload your repo to AWS.
+The application in it's current state is deployed and can be accesed at the base route off:
+> https://l0bscxz6o4.execute-api.us-east-1.amazonaws.com/dev/api
 
 ## License
 The code in this project is licensed under MIT license.
