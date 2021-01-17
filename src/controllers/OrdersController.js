@@ -1,9 +1,9 @@
 const nanoid = require("nanoid");
-const mongodb = require("mongodb");
-
+const Database = require('../db/Database');
+const collection = new Database("GForcesVehicleOrders", "VehicleOrders");
 // get all orders
 exports.baseRoute = async (req, res) => {
-  const orders = await loadOrdersCollection();
+  const orders = await collection.loadConnection();
   try {
     const allOrders = await orders.find({}).toArray();
     res.status(200).json(allOrders);
@@ -14,7 +14,7 @@ exports.baseRoute = async (req, res) => {
 
 // get single order
 exports.getSingle = async (req, res) => {
-  const orders = await loadOrdersCollection();
+  const orders = await collection.loadConnection();
   await orders
     .findOne({ orderId: req.params.id })
     .then((order) => {
@@ -27,7 +27,7 @@ exports.getSingle = async (req, res) => {
 
 //create new order
 exports.createSingle = async (req, res) => {
-  const orders = await loadOrdersCollection();
+  const orders = await collection.loadConnection();
   const newId = nanoid.nanoid();
   await orders
     .insertOne({
@@ -50,7 +50,7 @@ exports.createSingle = async (req, res) => {
 
 // delete single order
 exports.deleteSingle = async (req, res) => {
-  const orders = await loadOrdersCollection();
+  const orders = await collection.loadConnection();
   // TODO orders.find(id) to see if order exist
   await orders.deleteOne({ orderId: req.params.id }).catch((err) => {
     res.status(404).json({
@@ -66,7 +66,7 @@ exports.deleteSingle = async (req, res) => {
 
 // update order
 exports.updateSingle = async (req, res) => {
-  const orders = await loadOrdersCollection();
+  const orders = await collection.loadConnection();
   // TODO check to see if id exist
   const exist = await orders.findOne({ orderId: req.params.id });
   const updatedOrder = req.body;
@@ -97,11 +97,3 @@ exports.updateSingle = async (req, res) => {
     });
   }
 };
-
-async function loadOrdersCollection() {
-  const client = await mongodb.MongoClient.connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-  return client.db("GForcesVehicleOrders").collection("VehicleOrders");
-}
