@@ -1,4 +1,4 @@
-# GForces Technical Task
+# Coding Technical Task
 
 A technical task that incolved creating a web service and datastore that needed to process the following:
 
@@ -13,7 +13,12 @@ whilst considering these requirements:
 * Durability
 * Scalability
 * Tooling
-* I18N
+
+## Features
+
+* Cluster
+* JWT 
+* CRUD (MongoDB)
 
 ## Run Applictaion
 
@@ -27,9 +32,6 @@ To test each endpoint i recommend using Postman.
 
 ## AWS
 As the application is wihtin AWS architecture and has a .yml file, the service can be hosted as serverless functions on AWS.
-
-The application in it's current state is deployed and can be accesed at the base route off:
-> https://l0bscxz6o4.execute-api.us-east-1.amazonaws.com/dev/api
 
 ## License
 The code in this project is licensed under MIT license.

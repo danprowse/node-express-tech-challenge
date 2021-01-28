@@ -1,7 +1,7 @@
 {
-  "name": "g-forces-code-challenge",
+  "name": "code-challenge",
   "version": "1.0.0",
-  "description": "GForces coding challenge",
+  "description": "Coding Technical challenge",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
